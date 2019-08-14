@@ -1,0 +1,1 @@
+java -Dfile.encoding=UTF-8 -jar generateForRupor-1.0.jar
