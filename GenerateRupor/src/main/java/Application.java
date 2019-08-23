@@ -1,34 +1,36 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
+import java.io.File;
 
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        //Create a buffred reader so that you can read in the file
+        BufferedReader reader = new BufferedReader(new FileReader(new File("input_values.txt")));
 
-        Scanner scanner = new Scanner(System.in);
+        //The StringBuffer will be used to create a string if your file has multiple lines
+        StringBuffer sb = new StringBuffer();
+        String line;
 
-        System.out.println("Input Contact_value_start");
-        Integer Contact_value_start = scanner.nextInt();
+        while((line = reader.readLine())!= null)
+        {
+            sb.append(line);
+        }
 
-        System.out.println("Input Contact_value_end");
-        Integer Contact_value_end = scanner.nextInt();
+        //We now split the line on the "," to get a string array of the values
+        String [] store = sb.toString().split(";");
 
-        System.out.println("Input number of calls per second");
-        Integer Count_repeat = scanner.nextInt();
+        //Show values from file
+        for (int i = 6; i < 12; i++) {
+            System.out.println(store[i]);
+        }
 
-        System.out.println("Input Scenario, example: tests");
-        String Scenario = scanner.next();
-
-        scanner.nextLine();
-        System.out.println("Input Message, example: Старт. %pause=3000% Тестовое оповещение");
-        String Message = scanner.next();
-
-        scanner.nextLine();
-        System.out.println("Input start date, format: 2019-08-15T00:00:00+02:00");
-        String Input_datetime = scanner.next();
+        Integer Contact_value_start = Integer.parseInt(store[6]);
+        Integer Contact_value_end = Integer.parseInt(store[7]);
+        Integer Count_repeat = Integer.parseInt(store[8]);
+        String Scenario = new String(store[9].getBytes(), "UTF-8");
+        String Message = new String(store[10].getBytes(), "UTF-8");
+        String Input_datetime = store[11];
         ZonedDateTime dateTime = ZonedDateTime.parse(Input_datetime);
 
         Integer k = 1;
@@ -38,7 +40,8 @@ public class Application {
         Integer Contact_value = Contact_value_start;
         String Confirmation_PIN = "";
 
-        try (FileWriter writer = new FileWriter("a_generate_rup.csv");
+        try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream("export_generateForRupor.csv"),"UTF-8");
+
              BufferedWriter bw = new BufferedWriter(writer)) {
 
                 bw.write("Record number;Full name;Priority;Contact type;Contact order;Contact value;Scenario;Message;Confirmation PIN;Start datetime\n");
@@ -60,6 +63,6 @@ public class Application {
         } catch (IOException e) {
             System.err.format("IOException: %s%n", e);
         }
-        System.out.println("\nFile generated - a_generate_rup.csv");
+        System.out.println("\nFile generated - export_generateForRupor.csv");
     }
 }

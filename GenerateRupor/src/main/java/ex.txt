@@ -1,0 +1,27 @@
+/*
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Input Contact_value_start");
+        Integer Contact_value_start = scanner.nextInt();
+
+        System.out.println("Input Contact_value_end");
+        Integer Contact_value_end = scanner.nextInt();
+
+        System.out.println("Input number of calls per second");
+        Integer Count_repeat = scanner.nextInt();
+
+        System.out.println("Input Scenario, example: tests");
+        String Scenario = scanner.next();
+
+        scanner.nextLine();
+        System.out.println("Input Message, example: Старт. %pause=3000% Тестовое оповещение");
+        String Message = scanner.next();
+
+        scanner.nextLine();
+        System.out.println("Input start date, format: 2019-08-15T00:00:00+03:00");
+        String Input_datetime = scanner.next();
+        ZonedDateTime dateTime = ZonedDateTime.parse(Input_datetime);
+
+        //String Scenario = "tests";
+        //String Message = "Старт. %pause=7000% Тестовое оповещение";
+        */

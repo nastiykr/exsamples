@@ -37,6 +37,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\krivokora\IdeaProjects\GenerateRupor\src\main\java" />
       <recent name="C:\Users\krivokora\IdeaProjects\GenerateRupor\src" />
     </key>
   </component>
@@ -102,22 +103,13 @@
       <updated>1565689145385</updated>
       <workItem from="1565689149232" duration="16241000" />
       <workItem from="1565708219154" duration="5585000" />
-      <workItem from="1565769340788" duration="14373000" />
+      <workItem from="1565769340788" duration="14998000" />
+      <workItem from="1565877945092" duration="9101000" />
+      <workItem from="1566484364328" duration="4478000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/build/classes/java/main/Application.class</url>
-          <line>14</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

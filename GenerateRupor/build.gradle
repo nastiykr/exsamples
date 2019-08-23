@@ -34,9 +34,16 @@ jar {
 }
 
 task copyDocs(type: Copy) {
-    from 'C:\\Users\\krivokora\\IdeaProjects\\GenerateRupor\\src\\main\\java\\start_generateForRupor.bat'
+    from 'C:\\Users\\krivokora\\IdeaProjects\\GenerateRupor\\src\\main\\java\\generateForRupor.bat'
     into 'C:\\Users\\krivokora\\IdeaProjects\\GenerateRupor\\build\\libs'
 }
+
+task copyDocs2(type: Copy) {
+    from 'C:\\Users\\krivokora\\IdeaProjects\\GenerateRupor\\src\\main\\java\\input_values.txt'
+    into 'C:\\Users\\krivokora\\IdeaProjects\\GenerateRupor\\build\\libs'
+}
+
+
 
 task zipDocs(type: Zip) {
     archiveFileName = "generateForRupor-"+version+".zip"
@@ -47,13 +54,14 @@ task zipDocs(type: Zip) {
 
 
 task mySuperTask1(type: GradleBuild) {
-    tasks = ['build', 'copyDocs', 'zipDocs']
+    tasks = ['build', 'copyDocs', 'copyDocs2', 'zipDocs']
     println("Actions:\ngradle build\ngradle copyDocs\ngradle zipDocs\n")
 }
 
 task mySuperTask2 {
     dependsOn 'build'
     dependsOn 'copyDocs'
+    dependsOn 'copyDocs2'
     dependsOn 'zipDocs'
     println("Actions:\ngradle build\ngradle copyDocs\ngradle zipDocs\n")
 }

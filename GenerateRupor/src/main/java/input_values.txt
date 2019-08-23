@@ -1,0 +1,2 @@
+Contact value start; Contact value end; Number of calls per second; Scenario; Message; Start datetime;
+18100;18155;2;test;Старт. %pause=3000% Тестовое оповещение;2019-08-23T00:00:00+03:00;
