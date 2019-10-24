@@ -3,6 +3,8 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.io.File;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+
 public class Application {
     public static void main(String[] args) throws IOException {
         //Create a buffred reader so that you can read in the file
@@ -21,16 +23,17 @@ public class Application {
         String [] store = sb.toString().split(";");
 
         //Show values from file
-        for (int i = 6; i < 12; i++) {
+        for (int i = 7; i < 14; i++) {
             System.out.println(store[i]);
         }
 
-        Integer Contact_value_start = Integer.parseInt(store[6]);
-        Integer Contact_value_end = Integer.parseInt(store[7]);
-        Integer Count_repeat = Integer.parseInt(store[8]);
-        String Scenario = new String(store[9].getBytes(), "UTF-8");
-        String Message = new String(store[10].getBytes(), "UTF-8");
-        String Input_datetime = store[11];
+        Integer Contact_value_start = Integer.parseInt(store[7]);
+        Integer Contact_value_end = Integer.parseInt(store[8]);
+        Integer Numbers_of_calls = Integer.parseInt(store[9]);
+        Integer Frequency = Integer.parseInt(store[10]);
+        String Scenario = new String(store[11].getBytes(), "UTF-8");
+        String Message = new String(store[12].getBytes(), "UTF-8");
+        String Input_datetime = store[13];
         ZonedDateTime dateTime = ZonedDateTime.parse(Input_datetime);
 
         Integer k = 1;
@@ -45,12 +48,12 @@ public class Application {
              BufferedWriter bw = new BufferedWriter(writer)) {
 
                 bw.write("Record number;Full name;Priority;Contact type;Contact order;Contact value;Scenario;Message;Confirmation PIN;Start datetime\n");
-                for (int i = 0; i < 86400*Count_repeat;i++) {
+                for (int i = 0; i < (86400/Frequency) * Numbers_of_calls;i++) {
 
                     bw.write(k + ";" + k + ";" + Priority + ";" + Contact_type + ";" + Contact_order + ";" + Contact_value + ";" + Scenario + ";" + Message + ";" + Confirmation_PIN + ";" + dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssz")) +"\n");
 
-                    if (k % Count_repeat == 0) {
-                        dateTime = dateTime.plusSeconds(1);
+                    if (k % Numbers_of_calls == 0) {
+                        dateTime = dateTime.plusSeconds(1*Frequency);
                     }
 
                     k++;
